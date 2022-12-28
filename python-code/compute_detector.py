@@ -189,8 +189,8 @@ if __name__ == '__main__':
         ]
 
         # resize according to how we extracted patches when training
-        new_height = np.cast['int'](np.round(image_height * resize))
-        new_width = np.cast['int'](np.round(image_width * resize))
+        new_height = np.cast['int'](np.round(image_height * resize)).item()
+        new_width = np.cast['int'](np.round(image_width * resize)).item()
         start_time = time.time()
         image = cv2.resize(image_gray, (new_width, new_height))
         end_time = time.time()
