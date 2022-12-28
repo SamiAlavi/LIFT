@@ -23,7 +23,7 @@ _LIFT_SAVE_PNG=1
 
 # Whether the use Theano when keypoint testing. CuDNN is required when turned
 # on
-_LIFT_USE_THEANO=1
+_LIFT_USE_THEANO=0
 
 # The base path of the code
 export _LIFT_BASE_PATH="$(pwd)"
