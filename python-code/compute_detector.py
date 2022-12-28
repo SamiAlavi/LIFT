@@ -64,7 +64,8 @@ if __name__ == '__main__':
                            '<bSavePng> <bUseTheano> '
                            '<bPrintTime/optional> '
                            '<model_dir/optional> '
-                           '<num_keypoint/optional> ')
+                           '<num_keypoint/optional> '
+                           '<verbose/optional> ')
 
     config_file = sys.argv[1]
     image_file_name = sys.argv[2]
@@ -83,12 +84,16 @@ if __name__ == '__main__':
         num_keypoint = int(sys.argv[8])
     else:
         num_keypoint = 1000
+    if len(sys.argv) >= 10:
+        verbose = bool(int(sys.argv[9]))
+    else:
+        verbose = True    
 
 
     # ------------------------------------------------------------------------
     # Setup and load parameters
     param = paramStruct()
-    param.loadParam(config_file, verbose=True)
+    param.loadParam(config_file, verbose=verbose)
     pathconf = pathConfig()
 
     # Initialize pathconf structure

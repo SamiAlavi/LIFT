@@ -54,7 +54,8 @@ if __name__ == '__main__':
                            '<config_file> <image_file> '
                            '<kp_file> <output_file> <bDumpPatch> '
                            '<bPrintTime/optional> '
-                           '<model_dir/optional> ')
+                           '<model_dir/optional> '
+                           '<verbose/optional> ')
 
     config_file = sys.argv[1]
     image_file_name = sys.argv[2]
@@ -69,11 +70,15 @@ if __name__ == '__main__':
         model_dir = sys.argv[7]
     else:
         model_dir = None
+    if len(sys.argv) >= 9:
+        verbose = bool(int(sys.argv[8]))
+    else:
+        verbose = True    
 
     # ------------------------------------------------------------------------
     # Setup and load parameters
     param = paramStruct()
-    param.loadParam(config_file, verbose=True)
+    param.loadParam(config_file, verbose=verbose)
     pathconf = pathConfig()
     pathconf.setupTrain(param, 0)
 
