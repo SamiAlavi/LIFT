@@ -10,7 +10,7 @@ export OMP_NUM_THREADS=1
 export CUDA_VISIBLE_DEVICES=0
 
 # Theano Flags 
-export THEANO_FLAGS="device=gpu0,${THEANO_FLAGS}"
+export THEANO_FLAGS="device=cuda,${THEANO_FLAGS}"
 
 # ------------------------------------------------------------
 # LIFT code settings
