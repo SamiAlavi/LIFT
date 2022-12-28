@@ -82,8 +82,10 @@ if __name__ == '__main__':
         model_dir = None
     if len(sys.argv) >= 9:
         num_keypoint = int(sys.argv[8])
+        if (num_keypoint == 0):
+            num_keypoint = None
     else:
-        num_keypoint = 1000
+        num_keypoint = None
     if len(sys.argv) >= 10:
         verbose = bool(int(sys.argv[9]))
     else:

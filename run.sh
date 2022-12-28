@@ -16,7 +16,7 @@ export THEANO_FLAGS="device=cuda,${THEANO_FLAGS}"
 # LIFT code settings
 
 # Number of keypoints
-_LIFT_NUM_KEYPOINT=1000
+_LIFT_NUM_KEYPOINT=0
 
 # Whether to save debug image for keypoints
 _LIFT_SAVE_PNG=1
