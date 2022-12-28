@@ -108,10 +108,10 @@ if __name__ == '__main__':
 
     # -------------------------------------------------------------------------
     # Test using the test function
-    start_time = time.clock()
+    start_time = time.time()
     _, oris, compile_time = Test(
         pathconf, param, test_data_in, test_mode="ori")
-    end_time = time.clock()
+    end_time = time.time()
     compute_time = (end_time - start_time) * 1000.0 - compile_time
     print("Time taken to compile is {} ms".format(
         compile_time

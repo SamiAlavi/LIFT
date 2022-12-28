@@ -142,11 +142,11 @@ def CreateNetwork4Image(pathconf, param, image, verbose=True):
 
 def TestImage(pathconf, param, image, verbose=True, network_weights=None):
 
-    start_time = time.clock()
+    start_time = time.time()
     # ------------------------------------------------------------------------
     # Create the Network
     myNet = CreateNetwork4Image(pathconf, param, image, verbose=verbose)
-    end_time = time.clock()
+    end_time = time.time()
     compile_time = (end_time - start_time) * 1000.0
 
     # # -----------------------------------------------------------------------
@@ -174,10 +174,10 @@ def Test(pathconf,
 
     # ------------------------------------------------------------------------
     # Create the Network
-    start_time = time.clock()
+    start_time = time.time()
     myNet = CreateNetwork(pathconf, param, test_data_in, test_data_in,
                           test_data_in)
-    end_time = time.clock()
+    end_time = time.time()
     compile_time = (end_time - start_time) * 1000.0
 
     # ------------------------------------------------------------------------

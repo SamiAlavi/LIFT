@@ -100,7 +100,7 @@ if __name__ == '__main__':
 
     # ------------------------------------------------------------------------
     # Run learned network
-    start_time = time.clock()
+    start_time = time.time()
     resize_scale = 1.0
     # If there is not gray image, load the color one and convert to gray
     # read the image
@@ -126,7 +126,7 @@ if __name__ == '__main__':
 
     assert len(image_gray.shape) == 2
 
-    end_time = time.clock()
+    end_time = time.time()
     load_prep_time = (end_time - start_time) * 1000.0
     print("Time taken to read and prepare the image is {} ms".format(
         load_prep_time
@@ -186,9 +186,9 @@ if __name__ == '__main__':
         # resize according to how we extracted patches when training
         new_height = np.cast['int'](np.round(image_height * resize))
         new_width = np.cast['int'](np.round(image_width * resize))
-        start_time = time.clock()
+        start_time = time.time()
         image = cv2.resize(image_gray, (new_width, new_height))
-        end_time = time.clock()
+        end_time = time.time()
         resize_time = (end_time - start_time) * 1000.0
         print("Time taken to resize image is {}ms".format(
             resize_time
@@ -209,12 +209,12 @@ if __name__ == '__main__':
             # disable descriptor to avoid complications
             param_cur_scale.model.sDescriptor = 'bypass'
 
-            start_time = time.clock()
+            start_time = time.time()
             # turn back verbose on
             test_res, compile_time = TestImage(pathconf, param_cur_scale,
                                                image, verbose=False)
             test_res = np.squeeze(test_res)
-            end_time = time.clock()
+            end_time = time.time()
             compute_time = (end_time - start_time) * 1000.0 - compile_time
             print('Time taken using theano for image size {}'
                   ' is {} milliseconds'.format(
@@ -222,14 +222,14 @@ if __name__ == '__main__':
             print("Compile time is {} milliseconds".format(compile_time))
 
         else:
-            start_time = time.clock()
+            start_time = time.time()
             sKpNonlinearity = getattr(param.model, 'sKpNonlinearity', 'None')
             test_res = apply_learned_filter_2_image_no_theano(
                 image, pathconf.result,
                 param.model.bNormalizeInput,
                 sKpNonlinearity,
                 verbose=True)
-            end_time = time.clock()
+            end_time = time.time()
             compute_time = (end_time - start_time) * 1000.0
             print('Time taken using opencv for image size {} is {}'
                   ' milliseconds'.format(image.shape, compute_time))
@@ -237,13 +237,13 @@ if __name__ == '__main__':
         total_time += compute_time
 
         # pad and add to list
-        start_time = time.clock()
+        start_time = time.time()
         test_res_list += [np.pad(test_res,
                                  int((param.model.nFilterSize - 1) / 2),
                                  # mode='edge')]
                                  mode='constant',
                                  constant_values=-np.inf)]
-        end_time = time.clock()
+        end_time = time.time()
         pad_time = (end_time - start_time) * 1000.0
         print("Time taken for padding and stacking is {} ms".format(
             pad_time
@@ -296,13 +296,13 @@ if __name__ == '__main__':
 
     print("Performing NMS")
     fScaleEdgeness = getattr(param.validation, 'fScaleEdgeness', 0)
-    start_time = time.clock()
+    start_time = time.time()
     res_list = test_res_list
     XYZS = get_XYZS_from_res_list(res_list, resize_to_test,
                                   scales_to_test, nearby, edge_th,
                                   scl_intv, nms_intv, do_interpolation,
                                   fScaleEdgeness)
-    end_time = time.clock()
+    end_time = time.time()
     XYZS = XYZS[:num_keypoint]
     draw_XYZS_to_img(XYZS, output_file + '.jpg')
 
