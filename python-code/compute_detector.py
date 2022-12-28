@@ -288,7 +288,8 @@ if __name__ == '__main__':
             return
 
         # draw onto the original image
-        if cv2.__version__[0] == '3':
+        cv2_version = int(cv2.__version__[0])
+        if (cv2_version >= 3):
             linetype = cv2.LINE_AA
         else:
             linetype = cv2.CV_AA
