@@ -401,7 +401,7 @@ class ECCVNetworkBase(NetworkBase):
     #     shuffle_file = (dump_dir + 'valid_shuffle' +
     #                     str(self.n_valid_pairs) +
     #                     str(neg_per_pos) + '.h5')
-    #     check_lock_file = ('.locks/' +
+    #     check_lock_file = ('_locks/' +
     #                        hashlib.md5(shuffle_file.encode()).hexdigest() +
     #                        '.lock')
     #     check_lock = Lock(check_lock_file)
@@ -479,7 +479,7 @@ class ECCVNetworkBase(NetworkBase):
     #     shuffle_file = (dump_dir + 'test_shuffle' +
     #                     str(self.n_test_pairs) +
     #                     str(neg_per_pos) + '.h5')
-    #     check_lock_file = ('.locks/' +
+    #     check_lock_file = ('_locks/' +
     #                        hashlib.md5(shuffle_file.encode()).hexdigest() +
     #                        '.lock')
     #     check_lock = Lock(check_lock_file)

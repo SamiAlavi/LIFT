@@ -131,7 +131,7 @@ class pathConfig:
     def setupTrain(self, param, setID):
 
         # Lock to prevent race condition
-        lock_file = ".locks/setup.lock"
+        lock_file = "_locks/setup.lock"
         lock = Lock(lock_file)
         lock.lifetime = timedelta(days=2)
         lock.lock()
@@ -181,7 +181,7 @@ class pathConfig:
     def setupTest(self, param, testDataName):
 
         # Lock to prevent race condition
-        lock_file = ".locks/setup.lock"
+        lock_file = "_locks/setup.lock"
         lock = Lock(lock_file)
         lock.lifetime = timedelta(days=2)
         lock.lock()
