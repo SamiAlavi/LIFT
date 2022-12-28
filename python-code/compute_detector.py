@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
     # ------------------------------------------------------------------------
     # Read arguments
-    if len(sys.argv) < 6 or len(sys.argv) > 9:
+    if len(sys.argv) < 6 or len(sys.argv) > 10:
         raise RuntimeError('USAGE: python compute_detector.py '
                            '<config_file> '
                            '<image_file> <output_file> '

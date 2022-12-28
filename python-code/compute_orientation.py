@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
     # ------------------------------------------------------------------------
     # Read arguments
-    if len(sys.argv) < 6 or len(sys.argv) > 8:
+    if len(sys.argv) < 6 or len(sys.argv) > 9:
         raise RuntimeError('USAGE: python compute_orientation.py '
                            '<config_file> <image_file> '
                            '<kp_file> <output_file> <bDumpPatch> '
