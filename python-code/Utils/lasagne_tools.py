@@ -432,7 +432,7 @@ def loadNetwork(dict_of_layers, dump_file_full_name_no_ext, prefix=''):
                                   SubtractiveNormalization2DLayer):
                         if _key + '.kernel' in h5file[_key].keys():
                             dict_of_layers[_key].kernel = np.asarray(
-                                h5file[_key][_key + '.kernel'].value
+                                h5file[_key][_key + '.kernel'][()]
                             )
                         else:
                             print("WARNING: We don't have the kernel value "
@@ -444,7 +444,7 @@ def loadNetwork(dict_of_layers, dump_file_full_name_no_ext, prefix=''):
                                   LocalContrastNormalization2DLayer):
                         if _key + '.kernel' in h5file[_key].keys():
                             dict_of_layers[_key].kernel = np.asarray(
-                                h5file[_key][_key + '.kernel'].value
+                                h5file[_key][_key + '.kernel'][()]
                             )
                         else:
                             print("WARNING: We don't have the kernel value "
@@ -514,8 +514,8 @@ def load_layer_weights(layer_name, saved_model_name):
 
     with h5py.File(saved_model_name, "r") as h5file:
         if layer_name in h5file.keys():
-            W = h5file[layer_name][layer_name + ".W"].value
-            b = h5file[layer_name][layer_name + ".b"].value
+            W = h5file[layer_name][layer_name + ".W"][()]
+            b = h5file[layer_name][layer_name + ".b"][()]
         else:
             raise RuntimeError(
                 "No such layer {}".format(layer_name)
