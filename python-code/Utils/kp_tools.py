@@ -63,11 +63,11 @@ def kp_list_2_opencv_kp_list(kp_list):
     for kp in kp_list:
         opencv_kp = cv2.KeyPoint(x=kp[IDX_X],
                                  y=kp[IDX_Y],
-                                 _size=kp[IDX_SIZE] * 2.0,
-                                 _angle=kp[IDX_ANGLE],
-                                 _response=kp[IDX_RESPONSE],
-                                 _octave=np.int32(kp[IDX_OCTAVE]),
-                                 # _class_id=np.int32(kp[IDX_CLASSID])
+                                 size=kp[IDX_SIZE] * 2.0,
+                                 angle=kp[IDX_ANGLE],
+                                 response=kp[IDX_RESPONSE],
+                                 octave=np.int32(kp[IDX_OCTAVE]),
+                                 # class_id=np.int32(kp[IDX_CLASSID])
                                  )
         opencv_kp_list += [opencv_kp]
 
